@@ -64,4 +64,15 @@ public class WeatherStation {
         this.pressure = WeatherStation.hPaToInHG(main.get("pressure").getAsFloat());
         notifyDisplays();
     }
+
+}public static void main(String[] args) {
+    WeatherStation ws = new WeatherStation();
+    ws.registerDisplay(new ConsoleDisplay(ws)); // assuming you have a class that implements Display interface and prints the data to console
+    try {
+        ws.measure(); // this will fetch the data from the API and notify the display
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 }
+
+
